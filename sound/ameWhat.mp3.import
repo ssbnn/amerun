@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ameWhat.mp3-df501aa807759104be311f5ba55bcadc.mp3str"
+
+[deps]
+
+source_file="res://sound/ameWhat.mp3"
+dest_files=[ "res://.import/ameWhat.mp3-df501aa807759104be311f5ba55bcadc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

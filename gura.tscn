@@ -1,0 +1,112 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://enemy/ringgura.png" type="Texture" id=1]
+[ext_resource path="res://gura.gd" type="Script" id=2]
+[ext_resource path="res://enemy/taigo_gura.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 870, 770 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 870, 0, 870, 770 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1740, 0, 870, 770 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 2610, 0, 870, 770 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 770, 870, 770 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 870, 770, 870, 770 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1740, 770, 870, 770 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 2610, 770, 870, 770 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 775, 0, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1550, 0, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 750, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 775, 750, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1550, 750, 775, 750 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "taigo",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "rigfit",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=17]
+
+[node name="Enemy" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_damp = 0.0
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.0633333, 0.0633333 )
+frames = SubResource( 7 )
+animation = "taigo"
+frame = 6
+speed_scale = 3.0
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5, 0 )
+scale = Vector2( 2, 2 )
+shape = SubResource( 17 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
