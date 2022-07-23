@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Tiles/Blue tiles/tileBlue_05.png" type="Texture" id=1]
 [ext_resource path="res://Tiles/Blue tiles/tileBlue_03.png" type="Texture" id=2]
+[ext_resource path="res://background/png_bg/main_bg.png" type="Texture" id=3]
+[ext_resource path="res://BG_layer.gd" type="Script" id=4]
+[ext_resource path="res://Floor_layer.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -53,12 +56,26 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 } ]
 1/z_index = 0
 
-[node name="main_floor" type="Node2D"]
+[node name="floor" type="ParallaxBackground"]
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="floor" type="TileMap" parent="."]
+[node name="BG_layer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 1489, 0 )
+script = ExtResource( 4 )
+BG_SPEED = -50.0
+
+[node name="Sprite" type="Sprite" parent="BG_layer"]
+position = Vector2( 738.776, 253.063 )
+scale = Vector2( 1.18423, 1.18423 )
+texture = ExtResource( 3 )
+
+[node name="Floor_layer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 720, 0 )
+script = ExtResource( 5 )
+
+[node name="floor" type="TileMap" parent="Floor_layer"]
 tile_set = SubResource( 3 )
 format = 1
 tile_data = PoolIntArray( 589823, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0 )

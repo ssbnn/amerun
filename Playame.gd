@@ -39,8 +39,7 @@ func get_input(delta):
 		
 		if is_on_floor():
 			status = STATUS.JUMP
-			$Jumptimer.start()
-			sound_jump.playing = true
+			sound_jump.play()
 			
 func _process(delta):
 	get_input(delta)
@@ -49,6 +48,7 @@ func _process(delta):
 		STATUS.ROLLING:
 			$AnimatedSprite.play("rolling ame")
 			$AnimatedSprite.scale = Vector2.ONE * 0.5
+			
 		STATUS.JUMP:
 			if is_on_floor():
 				velocity += Vector2.UP * delta * 30000
@@ -77,11 +77,9 @@ func _physics_process(delta):
 	
 func _on_Area2D_body_entered(body):
 	if body.get_name() != 'Player':
-		#sound_die.play()
 		emit_signal("hit")
-		hide()
 		$CollisionShape2D.set_deferred("disabled", true)
-
-
-func _on_Jumptimer_timeout():
-	sound_jump.playing = false
+		hide()
+		print('asdf')
+		#sound_die.play()
+		

@@ -4,6 +4,36 @@
 [ext_resource path="res://gura.gd" type="Script" id=2]
 [ext_resource path="res://enemy/taigo_gura.png" type="Texture" id=3]
 
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 775, 0, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1550, 0, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 750, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 775, 750, 775, 750 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1550, 750, 775, 750 )
+
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 3 )
@@ -44,52 +74,24 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 2610, 770, 870, 770 )
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 775, 750 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 775, 0, 775, 750 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 1550, 0, 775, 750 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 750, 775, 750 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 775, 750, 775, 750 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 1550, 750, 775, 750 )
-
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
-"loop": true,
-"name": "taigo",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "rigfit",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "taigo",
 "speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=17]
 
 [node name="Enemy" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
 gravity_scale = 0.0
 linear_damp = 0.0
 script = ExtResource( 2 )
@@ -98,7 +100,7 @@ script = ExtResource( 2 )
 scale = Vector2( 0.0633333, 0.0633333 )
 frames = SubResource( 7 )
 animation = "taigo"
-frame = 6
+frame = 4
 speed_scale = 3.0
 playing = true
 

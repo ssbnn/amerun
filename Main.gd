@@ -5,9 +5,12 @@ const ENEMY_SPEED := 300
 onready var screen := get_viewport_rect()
 onready var bgm = $BGM
 
+
 enum SPAWN_LOCATION{
 	UP,
 	DOWN,
+	DN,
+	DON
 }
 
 var score = 0
@@ -28,6 +31,7 @@ func _on_HUD_start_game():
 	$StartTimer.start()
 
 func _on_Player_hit():
+	
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
@@ -37,7 +41,7 @@ func _on_Player_hit():
 func spawn_enemy():
 	var enemy = ENEMY.instance()
 
-	var spawn_location := randi() % 2
+	var spawn_location := randi() % 4
 	var enemy_position := Vector2.ZERO
 	
 	enemy_position.x = 1100
@@ -45,6 +49,10 @@ func spawn_enemy():
 		SPAWN_LOCATION.UP:
 			enemy_position.y = 400
 		SPAWN_LOCATION.DOWN:
+			enemy_position.y = 480
+		SPAWN_LOCATION.DN:
+			enemy_position.y = 480
+		SPAWN_LOCATION.DON:
 			enemy_position.y = 480
 
 
